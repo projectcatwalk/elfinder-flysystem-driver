@@ -69,6 +69,11 @@ class Driver extends elFinderVolumeDriver
             $opts['path'] = '/';
         }
 
+        $this->URL = $opts['URL'];
+        if ($this->URL && preg_match("|[^/?&=]$|", $this->URL)) {
+            $this->URL .= '/';
+        }
+
         return parent::mount($opts);
     }
 
